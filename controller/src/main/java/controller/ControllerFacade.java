@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import model.Example;
+import controller.IController;
 import model.IModel;
 import view.IView;
 import controller.IOrderPerformer;
@@ -104,4 +105,10 @@ public class ControllerFacade implements IController {
     public IOrderPerformer getOrderPeformer() {
         return this;
     }
+
+	@Override
+	public void play() throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,7 +1,7 @@
 package model;
 
 import java.awt.Image;
-import showboard.ISquare;
+import model.IElement;
 
 public abstract class Element implements IElement{
 	private Sprite sprite;

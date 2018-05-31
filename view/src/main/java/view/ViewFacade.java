@@ -8,9 +8,12 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import controller.IOrderPerformer;
+import view.IView;
+import model.UserOrder;
 import model.ILevel;
 import model.IMotionElement;
 import showboard.BoardFrame;
+import model.Level;
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
  *
@@ -18,7 +21,7 @@ import showboard.BoardFrame;
  * @version 1.0
  */
 public class ViewFacade implements IView, Runnable, KeyListener {
-	private static final int roadView   = 10;
+	private static final int levelView   = 10;
 	private static final int squareSize = 50;
 	private Rectangle closeView;
 	private ILevel level;
@@ -110,7 +113,7 @@ public class ViewFacade implements IView, Runnable, KeyListener {
         return this.level;
     }
     
-    private void (final ILevel level) throws IOException {
+    private void setLevel (ILevel level) {
     	this.level = level;
     }
     

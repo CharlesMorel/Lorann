@@ -3,12 +3,13 @@ package model;
 import java.io.IOException;
 import java.util.Observable;
 import contract.IElement;
+import contract.ILevel;
 import model.MotionlessElement;
 
 public class Level extends Observable implements ILevel{
     private int width;
     private int height;
-    private IElement[][] inThe;
+    private IElement[][] inTheLevel;
     
     Level(String ResultSet) throws IOException{
     	super();

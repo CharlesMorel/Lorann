@@ -3,7 +3,7 @@ package model;
 import model.Permeability;
 import model.Sprite;
 
-public class HWall {
+public class HWall  extends MotionlessElement {
     private static final Sprite SPRITE = new Sprite('X', "horizontal_bone.png");
     
     HWall() {

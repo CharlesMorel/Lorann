@@ -1,22 +1,22 @@
 package model;
 
 import java.io.IOException;
-import model.ILevel;
+import contract.ILevel;
 import model.Permeability;
 import model.Sprite;
 
 public class Lorann {
-	private static final Sprite spriteUp = new Sprite("lorann_u.png");
-	private static final Sprite spriteDown = new Sprite("lorann_b.png");
-	private static final Sprite spriteLeft = new Sprite("lorann_l.png");
-	private static final Sprite spriteRight = new Sprite("lorann_r.png");
+	private static final Sprite spriteUp = new Sprite((Character) null, "lorann_u.png");
+	private static final Sprite spriteDown = new Sprite((Character) null, "lorann_b.png");
+	private static final Sprite spriteLeft = new Sprite((Character) null, "lorann_l.png");
+	private static final Sprite spriteRight = new Sprite((Character) null, "lorann_r.png");
 
 	public Lorann(final int x, final int y, final ILevel level) throws IOExecption{
-		super(x, y, level, Permeability.BLOCKING);
+		super();
 		spriteUp.loadImage();
 		spriteDown.loadImage();
 		spriteLeft.loadImage();
-		spriteRight.loadImag();
+		spriteRight.loadImage();
 	}
 	
 	@Override
