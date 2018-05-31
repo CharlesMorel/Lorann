@@ -1,11 +1,12 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 import model.Example;
 import model.IModel;
 import view.IView;
+import controller.IOrderPerformer;
 
 /**
  * <h1>The Class ControllerFacade provides a facade of the Controller component.</h1>
@@ -14,6 +15,7 @@ import view.IView;
  * @version 1.0
  */
 public class ControllerFacade implements IController {
+    private UserOrder stackOrder;
 
     /** The view. */
     private final IView  view;
@@ -33,6 +35,11 @@ public class ControllerFacade implements IController {
         super();
         this.view = view;
         this.model = model;
+    }
+    
+    @Override
+    public final void orderPerform(final UserOrder userOrder) throws IOException {
+        this.setStackOrder(userOrder);
     }
 
     /**
@@ -63,6 +70,10 @@ public class ControllerFacade implements IController {
     public IView getView() {
         return this.view;
     }
+    
+    private void setView(final IView view) {
+        this.view = view;
+    }
 
     /**
      * Gets the model.
@@ -71,5 +82,26 @@ public class ControllerFacade implements IController {
      */
     public IModel getModel() {
         return this.model;
+    }
+    
+    private void setModel(final IModel model) {
+        this.model = model;
+    }
+    
+    private UserOrder getStackOrder() {
+        return this.stackOrder;
+    }
+    
+    private void setStackOrder(final UserOrder stackOrder) {
+        this.stackOrder = stackOrder;
+    }
+    
+    private void clearStackOrder() {
+        this.stackOrder = UserOrder.NOP;
+    }
+    
+    @Override
+    public IOrderPerformer getOrderPeformer() {
+        return this;
     }
 }

@@ -2,6 +2,7 @@ package model;
 
 import java.sql.SQLException;
 import java.util.List;
+import model.IMotionElement;
 
 /**
  * <h1>The Interface IModel.</h1>
@@ -10,6 +11,8 @@ import java.util.List;
  * @version 1.0
  */
 public interface IModel {
+	ILevel getRoad();
+	IMotionElement getLorann();
 
     /**
      * Gets the example by id.
