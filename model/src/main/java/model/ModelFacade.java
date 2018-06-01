@@ -1,67 +1,71 @@
 package model;
 
-import java.sql.SQLException;
-import java.util.List;
-import model.dao.ExampleDAO;
 import java.io.IOException;
-import model.IMotionElement;
-import model.Lorann;
 
-public final class ModelFacade implements IModel {
-	private ILevel level;
-	private IMotionElement lorann;
+import contract.model.ILevel;
+import contract.model.IMobile;
+import contract.model.IModelFacade;
+import model.element.mobile.Lorann;
 
+public class ModelFacade implements IModelFacade {
+
+	   /** The road. */
+    private ILevel  level;
+
+    /** The my vehicle. */
+    private IMobile lorann;
+    
     /**
-     * Instantiates a new model facade.
+     * Instantiates a new model.
+     *
+     * @param fileName
+     *            the file name
+     *            
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    public ModelFacade(final String resultSet, final int lorannStartX, final int lorannStartY) throws IOException {
-    	this.setLevel(new Level(resultSet));
-    	this.setLorann(new Lorann(lorannStartX, lorannStartY, this.getLevel()))
+    public ModelFacade(final String fileName) throws IOException {
+        this.setLevel(new Level(fileName));
+        this.setLorann(new Lorann(21, 6, this.getLevel()));
     }
     
+    /**
+     * get level
+     * @return level
+     */
     @Override
     public final ILevel getLevel() {
         return this.level;
     }
-    
+
+    /**
+     * Sets the level.
+     *
+     * @param level
+     * 
+     */
     private void setLevel(final ILevel level) {
         this.level = level;
     }
-    
+
+    /**
+     * get lorann
+     * 
+     *@return lorann
+     */
     @Override
-    public final IMotionElement getLorann() {
+    public final IMobile getLorann() {
         return this.lorann;
     }
-    
-    private void setLorann(final IMotionElement lorann) {
+
+    /**
+     * Sets lorann.
+     *
+     * @param lorann
+     *
+     */
+    private void setLorann(final IMobile lorann) {
         this.lorann = lorann;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getExampleById(int)
-     */
-    @Override
-    public Example getExampleById(final int id) throws SQLException {
-        return ExampleDAO.getExampleById(id);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getExampleByName(java.lang.String)
-     */
-    @Override
-    public Example getExampleByName(final String name) throws SQLException {
-        return ExampleDAO.getExampleByName(name);
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see model.IModel#getAllExamples()
-     */
-    @Override
-    public List<Example> getAllExamples() throws SQLException {
-        return ExampleDAO.getAllExamples();
     }
 
 }
